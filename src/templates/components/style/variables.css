@@ -1,0 +1,10 @@
+:root {
+    --primary-color: #cf20d2;
+    --secondary-color: #f8f8f8;
+    --primary-hover-color: #991b9b;
+    --secondary-hover-color: #dfdfdf;
+
+    --font-family: 'Roboto', sans-serif;
+
+    --flex: "flex";
+}

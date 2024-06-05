@@ -1,0 +1,46 @@
+{
+    "navigationBar": {
+        "links": [
+            {
+                "id": "1",
+                "page1": "home",
+                "link": "/"
+            },
+            {
+                "id": "2",
+                "page2": "about",
+                "link": "/about"
+            },
+            {
+                "id": "3",
+                "page3": "services",
+                "link": "/services"
+            },
+            {
+                "id": "4",
+                "page4": "contact",
+                "link": "/contact"
+            }
+        ],
+        "logo": {
+            "id": "1",
+            "value": "AhmedAnsari"
+        },
+        "button": {
+            "id": "1",
+            "value": "Resume"
+        }
+    },
+    "landingPage": [
+        {
+            "title": "This is my portfolio website",
+            "subTitle": "Here is the information related to my work and skill.",
+            "CTA": [
+                {
+                    "button": "Resume"
+                }
+            ],
+            "image": ""
+        }
+    ]
+}
