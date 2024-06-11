@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, GoogleIcon } from "../../components";
+import { Button, GoogleIcon, InputField } from "../../components";
 import { buttonTypes } from "../../utils";
 
 const Signup = () => {
@@ -23,23 +23,20 @@ const Signup = () => {
       <div className="flex flex-col justify-center items-center gap-1 relative under-line after:w-1/12 after:h-[.1rem] after:rounded-full after:-bottom-3 after:left-1/2 after:-translate-x-1/2">
         <h2 className="text-[2.5rem] font-bold">Sign up</h2>
         <p className="opacity-75 text-center">
-          Perfect for freshers and job seekers to showcase their
-          skills and experiences. <span className="font-medium">Sign up now!</span>
+          Perfect for freshers and job seekers to showcase their skills and
+          experiences. <span className="font-medium">Sign up now!</span>
         </p>
       </div>
 
       <div className="flex flex-col w-full gap-5">
         {inputFields.map((field) => (
-          <div className="flex flex-col">
-            <label className="text-lg" htmlFor="">
-              {field.label}
-            </label>
-            <input
-              className={`px-4 py-2 text-white outline-none border border-mintExtreme border-opacity-20 focus:border-opacity-55 hover:bg-opacity-15 transition-all duration-200 rounded-md bg-mintExtreme bg-opacity-10 placeholder:text-sm placeholder:text-mint placeholder:text-opacity-45`}
-              type={field.type}
-              placeholder={field.placeholder}
-            />
-          </div>
+          <InputField
+            key={field.label}
+            label={field.label}
+            placeholder={field.placeholder}
+            type={field.type}
+            required={field.required}
+          />
         ))}
 
         <div className="flex items-start gap-4 flex-row-reverse justify-end">
@@ -63,7 +60,7 @@ const Signup = () => {
         </div>
 
         <div className="w-full">
-          <Button className="w-full" type={buttonTypes.SECONDARY}>
+          <Button className="w-full text-blue" type={buttonTypes.SECONDARY}>
             Sign up
           </Button>
         </div>
