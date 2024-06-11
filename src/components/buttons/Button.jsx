@@ -3,18 +3,16 @@ import { cn } from "../../utils";
 import { buttonTypes } from "../../utils";
 
 const Button = (props) => {
-  const { type, text, className } = props;
+  const { type, children, className } = props;
 
   let buttonStyle = "";
   switch (type) {
     case buttonTypes.PRIMARY:
-      buttonStyle =
-        "bg-teal-600 text-gray-200 hover:bg-teal-800 active:bg-teal-900 border border-teal-600";
+      buttonStyle = "bg-gradient";
       break;
 
     case buttonTypes.SECONDARY:
-      buttonStyle =
-        "bg-transparent text-teal-600 border border-teal-600 hover:bg-teal-950 hover:bg-opacity-70 active:bg-opacity-100";
+      buttonStyle = "bg-mintExtreme";
       break;
 
     case buttonTypes.TERTIARY:
@@ -22,21 +20,23 @@ const Button = (props) => {
         "bg-transparent text-teal-600 border-none hover:text-teal-700";
       break;
 
+    case buttonTypes.SPECIAL:
+      buttonStyle = "bg-gradient-special";
+      break;
+
     default:
       break;
   }
 
   return (
-    <div
+    <button
       className={cn(
-        `bg-opacity-70 select-none py-[.5em] px-7 w-fit rounded-[.2rem] font-medium cursor-pointer bgop`,
-        buttonStyle,
+        `${buttonStyle} font-secondary px-6 py-2 rounded-md text-mint text-lg border border-mintExtreme border-opacity-40 hover:bg-mintExtreme hover:bg-opacity-30 transition-all duration-200 active:bg-opacity-60`,
         className
       )}
-      {...props}
     >
-      {text}
-    </div>
+      {children}
+    </button>
   );
 };
 
