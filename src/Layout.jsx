@@ -1,12 +1,19 @@
 import React from "react";
-import { Footer, MainContainer, Navbar } from "./components";
+import {
+  Footer,
+  MainContainer,
+  Navbar,
+  SecondaryContainer,
+} from "./components";
 import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   return (
     <MainContainer>
       <Navbar />
-      <Outlet />
+      <SecondaryContainer>
+        <Outlet />
+      </SecondaryContainer>
       <Footer />
     </MainContainer>
   );
