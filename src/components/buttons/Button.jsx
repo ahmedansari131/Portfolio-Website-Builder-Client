@@ -3,35 +3,35 @@ import { cn } from "../../utils";
 import { buttonTypes } from "../../utils";
 
 const Button = (props) => {
-  let { type, children, className = "" } = props;
-  // console.log(className);
-
+  const { type, children, className = "" } = props;
+  let buttonStyles = " ";
   switch (type) {
     case buttonTypes.PRIMARY:
-      className += " bg-gradient";
+      buttonStyles += "bg-gradient";
       break;
 
     case buttonTypes.SECONDARY:
-      className += " bg-mint border-none text-blue font-semibold font-primary";
+      buttonStyles +=
+        "bg-mint border-none text-blue font-semibold";
       break;
 
     case buttonTypes.TERTIARY:
-      className +=
-        " bg-transparent text-teal-600 border-none hover:text-teal-700";
+      buttonStyles +=
+        "bg-transparent text-teal-600 border-none hover:text-teal-700";
       break;
 
     case buttonTypes.SPECIAL:
-      className += " bg-gradient-special";
+      buttonStyles += "bg-gradient-special";
       break;
 
     default:
       break;
   }
-console.log(className)
+
   return (
     <button
       className={cn(
-        `font-secondary px-6 py-2 rounded-md text-mint text-lg border border-mintExtreme border-opacity-40 hover:bg-mintExtreme hover:bg-opacity-30 transition-all duration-200 active:bg-opacity-60`,
+        `${buttonStyles} font-secondary px-6 py-2 rounded-md text-mint text-lg border border-mintExtreme border-opacity-40 hover:bg-mintExtreme hover:bg-opacity-30 transition-all duration-200 active:bg-opacity-60`,
         className
       )}
     >
