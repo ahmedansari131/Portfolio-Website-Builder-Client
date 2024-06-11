@@ -3,14 +3,52 @@
 @tailwind utilities;
 
 ::-webkit-scrollbar {
-    width: 2px;
+    width: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: rgb(202, 202, 202);
+    background-color: rgba(76, 200, 211, .65);
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-track {
     background-color: transparent;
+}
+
+.bg-gradient {
+    background: rgb(76, 200, 211);
+    background: linear-gradient(90deg, rgba(76, 200, 211, 0.5) 0%, rgba(76, 200, 211, 0.1) 100%);
+}
+
+.bg-gradient-special {
+    background: rgb(76, 200, 211);
+    background: linear-gradient(180deg, rgba(76, 200, 211, 0.1) 0%, rgba(76, 200, 211, 0.5) 100%);
+}
+
+.under-line::after {
+    content: '';
+    width: 100%;
+    height: .01rem;
+    z-index: 10;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(76, 200, 211, .75);
+}
+
+.underline-effect:hover::after {
+    width: 100%;
+    background-color: rgba(76, 200, 211, 1);
+}
+
+.underline-effect::after {
+    content: '';
+    width: 0;
+    height: .01rem;
+    z-index: 10;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(76, 200, 211, .75);
+    transition: all .2s;
 }
