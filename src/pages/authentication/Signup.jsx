@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, GoogleIcon, InputField } from "../../components";
 import { buttonTypes } from "../../utils";
+import { Link } from "react-router-dom";
+import { useRegisterUserMutation } from "../../services/api/authApi";
 
 const Signup = () => {
+  const [registerUser, { isLoading }] = useRegisterUserMutation();
+  const [inputData, setInputData] = useState({
+    email: "",
+    password: "",
+    isAgree: false,
+  });
   const inputFields = [
     {
       type: "email",
@@ -33,19 +41,26 @@ const Signup = () => {
           <InputField
             key={field.label}
             label={field.label}
+            value={inputData?.[field.label.toLowerCase()]}
             placeholder={field.placeholder}
             type={field.type}
             required={field.required}
+            onChange={(e) => {
+              setInputData((prev) => ({
+                ...prev,
+                [field.label.toLowerCase()]: e.target.value,
+              }));
+            }}
           />
         ))}
 
         <div className="flex items-start gap-4 flex-row-reverse justify-end">
           <label className="text-sm text-mint text-opacity-75" htmlFor="terms">
             By registering, you agree that you have read, understand, and
-            acknowledge our{" "}
+            acknowledge our
             <span className="under-line relative cursor-pointer">
               Privacy Policy
-            </span>{" "}
+            </span>
             and accept out <br></br>
             <span className="under-line relative cursor-pointer">
               General Terms of use.
@@ -56,11 +71,18 @@ const Signup = () => {
             type="checkbox"
             name="terms"
             id="terms"
+            checked={inputData.isAgree}
+            onChange={(e) => {
+              setInputData((prev) => ({ ...prev, isAgree: e.target.checked }));
+            }}
           />
         </div>
 
         <div className="w-full">
-          <Button className="w-full text-blue" type={buttonTypes.SECONDARY}>
+          <Button
+            className="w-full text-blue hover:bg-opacity-95"
+            type={buttonTypes.SECONDARY}
+          >
             Sign up
           </Button>
         </div>
@@ -78,6 +100,16 @@ const Signup = () => {
           >
             <GoogleIcon /> Sign up with Google
           </Button>
+        </div>
+
+        <div>
+          <span className="font-secondary text-mint text-opacity-75 flex justify-center gap-2 font-light">
+            Already got account?{" "}
+            <Link to={"/signin"}>
+              {" "}
+              <span className="font-medium hover:underline">Sign in</span>
+            </Link>
+          </span>
         </div>
       </div>
     </div>
