@@ -41,7 +41,7 @@ const Footer = () => {
           {navLinks.map((navLink) => (
             <li>
               <a
-                className="underline-effect relative hover:underline-effect opacity-75 hover:opacity-100 hover:text-mintExtreme"
+                className="underline-effect relative  opacity-75 hover:opacity-100 hover:text-mintExtreme"
                 href={navLink.url}
               >
                 {navLink.name}
