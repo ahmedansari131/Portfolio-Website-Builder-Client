@@ -35,6 +35,7 @@ import MainContainer from "./wrapper/MainContainer"
 import Navbar from "./nav/Navbar";
 import Footer from "./footer/Footer";
 import SecondaryContainer from "./wrapper/SecondaryContainer";
+import InputField from "./input/InputField";
 
 
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -103,6 +104,7 @@ export {
     Navbar,
     Footer,
     SecondaryContainer,
+    InputField,
 
 
     SettingsIcon,
