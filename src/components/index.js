@@ -32,6 +32,8 @@ import ValueAdjusterInput from "./editor/controlCenter/inputField/ValueAdjusterI
 import Characters from "./editor/controlCenter/controlOptions/Characters";
 import CharacterAlignment from "./editor/controlCenter/controlOptions/CharacterAlignment";
 import MainContainer from "./wrapper/MainContainer"
+import Navbar from "./nav/Navbar";
+import Footer from "./footer/Footer";
 
 
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -57,6 +59,7 @@ import FormatColorTextIcon from '@mui/icons-material/FormatColorText';
 import FormatSizeIcon from '@mui/icons-material/FormatSize';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import TitleIcon from '@mui/icons-material/Title';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 
 export {
@@ -94,7 +97,8 @@ export {
     Characters,
     CharacterAlignment,
     MainContainer,
-
+    Navbar,
+    Footer,
 
 
     SettingsIcon,
@@ -120,5 +124,6 @@ export {
     FormatStrikethroughIcon,
     FormatLineSpacingIcon,
     TitleIcon,
+    ChevronRightIcon,
 
 }
