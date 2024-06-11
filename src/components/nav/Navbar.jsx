@@ -16,7 +16,7 @@ const Navbar = () => {
 
         <ul className="text-mint font-secondary font-light flex items-center gap-7">
           {navLinks.map((navLink) => (
-            <li>
+            <li key={navLink.name}>
               <a
                 className="underline-effect relative hover:underline-effect opacity-75 hover:opacity-100 hover:text-mintExtreme"
                 href={navLink.url}

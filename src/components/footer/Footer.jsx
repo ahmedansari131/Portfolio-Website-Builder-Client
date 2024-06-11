@@ -24,7 +24,7 @@ const Footer = () => {
 
         <ul>
           {socialLinks.map((socialLink) => (
-            <li>
+            <li key={socialLink.name}>
               <a
                 className="underline-effect relative opacity-75 hover:opacity-100 hover:text-mintExtreme"
                 href={socialLink.url}
@@ -39,7 +39,7 @@ const Footer = () => {
       <div>
         <ul className="flex flex-col items-end">
           {navLinks.map((navLink) => (
-            <li>
+            <li key={navLink.name}>
               <a
                 className="underline-effect relative opacity-75 hover:opacity-100 hover:text-mintExtreme"
                 href={navLink.url}
