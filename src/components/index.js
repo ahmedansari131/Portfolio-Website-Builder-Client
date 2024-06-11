@@ -34,6 +34,7 @@ import CharacterAlignment from "./editor/controlCenter/controlOptions/CharacterA
 import MainContainer from "./wrapper/MainContainer"
 import Navbar from "./nav/Navbar";
 import Footer from "./footer/Footer";
+import SecondaryContainer from "./wrapper/SecondaryContainer";
 
 
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -60,6 +61,8 @@ import FormatSizeIcon from '@mui/icons-material/FormatSize';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import TitleIcon from '@mui/icons-material/Title';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import GoogleIcon from '@mui/icons-material/Google';
+
 
 
 export {
@@ -99,6 +102,7 @@ export {
     MainContainer,
     Navbar,
     Footer,
+    SecondaryContainer,
 
 
     SettingsIcon,
@@ -125,5 +129,5 @@ export {
     FormatLineSpacingIcon,
     TitleIcon,
     ChevronRightIcon,
-
+    GoogleIcon,
 }
