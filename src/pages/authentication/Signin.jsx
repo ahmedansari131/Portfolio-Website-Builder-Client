@@ -42,7 +42,7 @@ const Signin = () => {
         <div className="w-full">
           <Button
             className="w-full text-blue hover:bg-opacity-95"
-            type={buttonTypes.SECONDARY}
+            buttonType={buttonTypes.SECONDARY}
           >
             Sign in
           </Button>
@@ -57,7 +57,7 @@ const Signin = () => {
         <div className="w-full">
           <Button
             className="w-full flex justify-center items-center gap-3"
-            type={buttonTypes.PRIMARY}
+            buttonType={buttonTypes.PRIMARY}
           >
             <GoogleIcon /> Sign in with Google
           </Button>
