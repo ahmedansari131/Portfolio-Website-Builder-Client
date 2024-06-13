@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import { Button, GoogleIcon, InputField } from "../../components";
+import { Button, GoogleIcon, InputField, Loader } from "../../components";
 import { buttonTypes } from "../../utils";
 import { Link } from "react-router-dom";
 import { useRegisterUserMutation } from "../../services/api/authApi";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
-  const [registerUser, { isLoading }] = useRegisterUserMutation();
+  const [registerUser, { isLoading, }] = useRegisterUserMutation();
+  const navigate = useNavigate();
   const [inputData, setInputData] = useState({
     email: "",
     password: "",
-    isAgree: false,
+    is_terms_agree: false,
   });
   const inputFields = [
     {
@@ -25,6 +27,28 @@ const Signup = () => {
       required: true,
     },
   ];
+
+  const regiserationHandler = async () => {
+    try {
+      console.log(inputData);
+
+      if (!Object.values(inputData).every((value) => value)) {
+        alert("Please fill all the details");
+        return;
+      }
+
+      const response = await registerUser(inputData);
+      if (response.data.success) {
+        alert(response.data.message);
+        navigate("/");
+      }
+      if (!response.data.success) {
+        alert(response.data.message);
+      }
+    } catch (error) {
+      console.log("Error occurred while registering the user -> ", error);
+    }
+  };
 
   return (
     <div className="flex flex-col justify-center items-center font-primary text-mint w-1/2 m-auto gap-10">
@@ -57,9 +81,9 @@ const Signup = () => {
         <div className="flex items-start gap-4 flex-row-reverse justify-end">
           <label className="text-sm text-mint text-opacity-75" htmlFor="terms">
             By registering, you agree that you have read, understand, and
-            acknowledge our
+            acknowledge our &nbsp;
             <span className="under-line relative cursor-pointer">
-              Privacy Policy
+              Privacy Policy &nbsp;
             </span>
             and accept out <br></br>
             <span className="under-line relative cursor-pointer">
@@ -71,19 +95,23 @@ const Signup = () => {
             type="checkbox"
             name="terms"
             id="terms"
-            checked={inputData.isAgree}
+            checked={inputData.is_terms_agree}
             onChange={(e) => {
-              setInputData((prev) => ({ ...prev, isAgree: e.target.checked }));
+              setInputData((prev) => ({
+                ...prev,
+                is_terms_agree: e.target.checked,
+              }));
             }}
           />
         </div>
 
         <div className="w-full">
           <Button
-            className="w-full text-blue hover:bg-opacity-95"
-            type={buttonTypes.SECONDARY}
+            className="w-full text-blue hover:bg-opacity-95 flex justify-center items-center"
+            buttonType={buttonTypes.SECONDARY}
+            handler={regiserationHandler}
           >
-            Sign up
+            {isLoading ? <Loader /> : "Sign up"}
           </Button>
         </div>
 
@@ -96,7 +124,7 @@ const Signup = () => {
         <div className="w-full">
           <Button
             className="w-full flex justify-center items-center gap-3"
-            type={buttonTypes.PRIMARY}
+            buttonType={buttonTypes.PRIMARY}
           >
             <GoogleIcon /> Sign up with Google
           </Button>
