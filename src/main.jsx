@@ -11,7 +11,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Layout from "./Layout.jsx";
-import { Signup, Signin, Landing } from "./pages/index.js";
+import { Signup, Signin, Landing, VerifyEmail } from "./pages/index.js";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,6 +19,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<Landing />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/signin" element={<Signin />} />
+      <Route path="/verify-email/" element={<VerifyEmail />} />
     </Route>
   )
 );
