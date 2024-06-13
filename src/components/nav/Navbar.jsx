@@ -2,9 +2,11 @@ import React from "react";
 import Button from "../buttons/Button";
 import { buttonTypes } from "../../utils";
 import { navLinks } from "../../utils/navLinks";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const { pathname } = useLocation();
+
   return (
     <div className="pr-side-space pl-side-space flex items-center justify-between">
       <div className="flex items-center gap-20">
@@ -14,24 +16,30 @@ const Navbar = () => {
           </h1>
         </div>
 
-        <ul className="text-mint font-secondary font-light flex items-center gap-7">
-          {navLinks.map((navLink) => (
-            <li key={navLink.name}>
-              <a
-                className="underline-effect relative hover:underline-effect opacity-75 hover:opacity-100 hover:text-mintExtreme"
-                href={navLink.url}
-              >
-                {navLink.name}
-              </a>
-            </li>
-          ))}
-        </ul>
+        {pathname !== "/verify-email/" && (
+          <ul className="text-mint font-secondary font-light flex items-center gap-7">
+            {navLinks.map((navLink) => (
+              <li key={navLink.name}>
+                <a
+                  className="underline-effect relative hover:underline-effect opacity-75 hover:opacity-100 hover:text-mintExtreme"
+                  href={navLink.url}
+                >
+                  {navLink.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
       <div>
-        <Link to={"/signup"}>
-          <Button buttonType={buttonTypes.PRIMARY}>Register</Button>
-        </Link>
+        {!pathname.includes("verify-email") &&
+          !pathname.includes("signup") &&
+          !pathname.includes("signin") && (
+            <Link to={"/signup"}>
+              <Button buttonType={buttonTypes.PRIMARY}>Register</Button>
+            </Link>
+          )}
       </div>
     </div>
   );
