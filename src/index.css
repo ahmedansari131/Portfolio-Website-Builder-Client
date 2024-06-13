@@ -61,8 +61,8 @@
 .dot-carousel {
     position: relative;
     left: -9999px;
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     border-radius: 5px;
     background-color: #032b44;
     color: #032b44;
