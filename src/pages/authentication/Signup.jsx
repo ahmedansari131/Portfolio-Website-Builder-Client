@@ -1,17 +1,27 @@
 import React, { useState } from "react";
-import { Button, GoogleIcon, InputField, Loader } from "../../components";
+import {
+  Button,
+  ErrorField,
+  GoogleIcon,
+  InputField,
+  Loader,
+} from "../../components";
 import { buttonTypes } from "../../utils";
 import { Link } from "react-router-dom";
 import { useRegisterUserMutation } from "../../services/api/authApi";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
-  const [registerUser, { isLoading, }] = useRegisterUserMutation();
+  const [registerUser, { isLoading }] = useRegisterUserMutation();
   const navigate = useNavigate();
   const [inputData, setInputData] = useState({
     email: "",
     password: "",
     is_terms_agree: false,
+  });
+  const [errorMessage, setErrorMessage] = useState({
+    email: "",
+    password: "",
   });
   const inputFields = [
     {
@@ -29,21 +39,50 @@ const Signup = () => {
   ];
 
   const regiserationHandler = async () => {
-    try {
-      console.log(inputData);
+    setErrorMessage({ email: "", password: "" });
+    const isValidEmail = (email) => {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    };
+    const isValidPassword = (password) => {
+      if (password.length < 8) return false;
+      return true;
+    };
 
+    try {
       if (!Object.values(inputData).every((value) => value)) {
         alert("Please fill all the details");
         return;
       }
 
+      if (!isValidEmail(inputData.email)) {
+        console.log("object", isValidEmail(inputData.email));
+        setErrorMessage((prev) => ({
+          ...prev,
+          email: "Enter a valid email address.",
+        }));
+        return;
+      }
+
+      if (!isValidPassword(inputData.password)) {
+        setErrorMessage((prev) => ({
+          ...prev,
+          password: "Password should be of 8 characters long.",
+        }));
+        return;
+      }
+
       const response = await registerUser(inputData);
-      if (response.data.success) {
+      if (response.error && !response.error.data.success) {
+        setErrorMessage({
+          email: response.error.data.message.email,
+          password: response.error.data.message.password,
+        });
+      }
+
+      if (response.data && response.data.success) {
         alert(response.data.message);
         navigate("/");
-      }
-      if (!response.data.success) {
-        alert(response.data.message);
       }
     } catch (error) {
       console.log("Error occurred while registering the user -> ", error);
@@ -60,9 +99,14 @@ const Signup = () => {
         </p>
       </div>
 
-      <div className="flex flex-col w-full gap-5">
+      <div className="flex flex-col w-full gap-7">
         {inputFields.map((field) => (
           <InputField
+            className={
+              errorMessage?.[field.label.toLowerCase()]
+                ? "border-red-600 border-opacity-100"
+                : ""
+            }
             key={field.label}
             label={field.label}
             value={inputData?.[field.label.toLowerCase()]}
@@ -75,7 +119,11 @@ const Signup = () => {
                 [field.label.toLowerCase()]: e.target.value,
               }));
             }}
-          />
+          >
+            <ErrorField
+              errorMessage={errorMessage?.[field.label.toLowerCase()]}
+            />
+          </InputField>
         ))}
 
         <div className="flex items-start gap-4 flex-row-reverse justify-end">
