@@ -25,7 +25,7 @@ const Landing = () => {
             </div>
             <Button
               className="flex items-center gap-1 justify-between"
-              type={buttonTypes.SPECIAL}
+              buttonType={buttonTypes.SPECIAL}
             >
               Start Building <ChevronRightIcon />
             </Button>
