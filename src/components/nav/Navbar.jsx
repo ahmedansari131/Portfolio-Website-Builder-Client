@@ -30,7 +30,7 @@ const Navbar = () => {
 
       <div>
         <Link to={"/signup"}>
-          <Button type={buttonTypes.PRIMARY}>Register</Button>
+          <Button buttonType={buttonTypes.PRIMARY}>Register</Button>
         </Link>
       </div>
     </div>
