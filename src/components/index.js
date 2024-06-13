@@ -37,6 +37,7 @@ import Footer from "./footer/Footer";
 import SecondaryContainer from "./wrapper/SecondaryContainer";
 import InputField from "./input/InputField";
 import Loader from "./loader/Loader";
+import ErrorField from "./errors/ErrorField";
 
 
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -109,6 +110,7 @@ export {
     SecondaryContainer,
     InputField,
     Loader,
+    ErrorField,
 
 
     SettingsIcon,
