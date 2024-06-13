@@ -36,6 +36,7 @@ import Navbar from "./nav/Navbar";
 import Footer from "./footer/Footer";
 import SecondaryContainer from "./wrapper/SecondaryContainer";
 import InputField from "./input/InputField";
+import Loader from "./loader/Loader";
 
 
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -63,6 +64,8 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import TitleIcon from '@mui/icons-material/Title';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import GoogleIcon from '@mui/icons-material/Google';
+import CheckIcon from '@mui/icons-material/Check';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 
@@ -105,6 +108,7 @@ export {
     Footer,
     SecondaryContainer,
     InputField,
+    Loader,
 
 
     SettingsIcon,
@@ -132,4 +136,6 @@ export {
     TitleIcon,
     ChevronRightIcon,
     GoogleIcon,
+    CheckIcon,
+    CloseIcon
 }
