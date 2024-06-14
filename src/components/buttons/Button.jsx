@@ -3,39 +3,40 @@ import { cn } from "../../utils";
 import { buttonTypes } from "../../utils";
 
 const Button = (props) => {
-  const { type, text, className } = props;
-
-  let buttonStyle = "";
-  switch (type) {
+  const { buttonType, children, handler=null, className = "" } = props;
+  let buttonStyles = "";
+  switch (buttonType) {
     case buttonTypes.PRIMARY:
-      buttonStyle =
-        "bg-teal-600 text-gray-200 hover:bg-teal-800 active:bg-teal-900 border border-teal-600";
+      buttonStyles = "bg-gradient";
       break;
 
     case buttonTypes.SECONDARY:
-      buttonStyle =
-        "bg-transparent text-teal-600 border border-teal-600 hover:bg-teal-950 hover:bg-opacity-70 active:bg-opacity-100";
+      buttonStyles = "bg-mint border-none text-blue font-semibold";
       break;
 
     case buttonTypes.TERTIARY:
-      buttonStyle =
+      buttonStyles =
         "bg-transparent text-teal-600 border-none hover:text-teal-700";
+      break;
+
+    case buttonTypes.SPECIAL:
+      buttonStyles = "bg-gradient-special";
       break;
 
     default:
       break;
   }
-
   return (
-    <div
-      className={cn(
-        `bg-opacity-70 select-none py-[.5em] px-7 w-fit rounded-[.2rem] font-medium cursor-pointer bgop`,
-        buttonStyle,
-        className
-      )}
-      {...props}
-    >
-      {text}
+    <div>
+      <button
+        className={cn(
+          `${buttonStyles} font-secondary px-6 py-2 rounded-md text-mint text-lg border border-mintExtreme border-opacity-40 hover:bg-mintExtreme hover:bg-opacity-30 transition-all duration-200 active:bg-opacity-60`,
+          className
+        )}
+        onClick={handler}
+      >
+        {children}
+      </button>
     </div>
   );
 };

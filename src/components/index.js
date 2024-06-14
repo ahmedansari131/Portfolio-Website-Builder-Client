@@ -32,6 +32,12 @@ import ValueAdjusterInput from "./editor/controlCenter/inputField/ValueAdjusterI
 import Characters from "./editor/controlCenter/controlOptions/Characters";
 import CharacterAlignment from "./editor/controlCenter/controlOptions/CharacterAlignment";
 import MainContainer from "./wrapper/MainContainer"
+import Navbar from "./nav/Navbar";
+import Footer from "./footer/Footer";
+import SecondaryContainer from "./wrapper/SecondaryContainer";
+import InputField from "./input/InputField";
+import Loader from "./loader/Loader";
+import ErrorField from "./errors/ErrorField";
 
 
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -57,6 +63,11 @@ import FormatColorTextIcon from '@mui/icons-material/FormatColorText';
 import FormatSizeIcon from '@mui/icons-material/FormatSize';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import TitleIcon from '@mui/icons-material/Title';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import GoogleIcon from '@mui/icons-material/Google';
+import CheckIcon from '@mui/icons-material/Check';
+import CloseIcon from '@mui/icons-material/Close';
+
 
 
 export {
@@ -94,7 +105,12 @@ export {
     Characters,
     CharacterAlignment,
     MainContainer,
-
+    Navbar,
+    Footer,
+    SecondaryContainer,
+    InputField,
+    Loader,
+    ErrorField,
 
 
     SettingsIcon,
@@ -120,5 +136,8 @@ export {
     FormatStrikethroughIcon,
     FormatLineSpacingIcon,
     TitleIcon,
-
+    ChevronRightIcon,
+    GoogleIcon,
+    CheckIcon,
+    CloseIcon
 }

@@ -3,14 +3,86 @@
 @tailwind utilities;
 
 ::-webkit-scrollbar {
-    width: 2px;
+    width: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: rgb(202, 202, 202);
+    background-color: rgba(76, 200, 211, .65);
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-track {
     background-color: transparent;
+}
+
+.bg-gradient {
+    background: rgb(76, 200, 211);
+    background: linear-gradient(90deg, rgba(76, 200, 211, 0.5) 0%, rgba(76, 200, 211, 0.1) 100%);
+}
+
+.bg-gradient-special {
+    background: rgb(76, 200, 211);
+    background: linear-gradient(180deg, rgba(76, 200, 211, 0.1) 0%, rgba(76, 200, 211, 0.5) 100%);
+}
+
+.under-line::after {
+    content: '';
+    width: 100%;
+    height: .01rem;
+    z-index: 10;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(76, 200, 211, .75);
+}
+
+.underline-effect:hover::after {
+    width: 100%;
+    background-color: rgba(76, 200, 211, 1);
+}
+
+.underline-effect::after {
+    content: '';
+    width: 0;
+    height: .01rem;
+    z-index: 10;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(76, 200, 211, .75);
+    transition: all .2s;
+}
+
+/* Loader */
+.padding-inherit {
+    padding: inherit;
+}
+
+.dot-carousel {
+    position: relative;
+    left: -9999px;
+    width: 8px;
+    height: 8px;
+    border-radius: 5px;
+    background-color: #032b44;
+    color: #032b44;
+    box-shadow: 9984px 0 0 0 #032b44, 9999px 0 0 0 #032b44, 10014px 0 0 0 #19142b;
+    animation: dot-carousel 1.3s infinite linear;
+}
+
+@keyframes dot-carousel {
+    0% {
+        box-shadow: 9984px 0 0 -1px #032b44, 9999px 0 0 1px #032b44,
+            10014px 0 0 -1px #032b44;
+    }
+
+    50% {
+        box-shadow: 10014px 0 0 -1px #032b44, 9984px 0 0 -1px #032b44,
+            9999px 0 0 1px #032b44;
+    }
+
+    100% {
+        box-shadow: 9999px 0 0 1px #032b44, 10014px 0 0 -1px #032b44,
+            9984px 0 0 -1px #032b44;
+    }
 }
