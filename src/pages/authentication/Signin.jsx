@@ -64,7 +64,7 @@ const Signin = () => {
         </div>
         <div>
           <span className="font-secondary text-mint text-opacity-75 flex justify-center gap-2 font-light">
-            Don't have an accoutn?{" "}
+            Don't have an account?{" "}
             <Link to={"/signup"}>
               {" "}
               <span className="font-medium hover:underline">Sign up</span>
