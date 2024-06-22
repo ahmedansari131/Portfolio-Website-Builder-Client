@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { buttonTypes } from "../../utils";
 import { navLinks } from "../../utils/navLinks";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -6,32 +6,25 @@ import { useSelector } from "react-redux";
 import { selectUser } from "../../selectors/userSelector";
 import { Button, Dialogue, DropdownMenu } from "..";
 import { useSignedOutUserMutation } from "../../services/api/authApi";
+import { useDialog } from "../../hooks";
 
 const Navbar = () => {
   const { pathname } = useLocation();
   const user = useSelector(selectUser);
   const [signoutUser, { isLoading }] = useSignedOutUserMutation();
   const navigate = useNavigate();
-  const [isDialogueOpen, setIsDialogueOpen] = useState(false);
+  const { isDialogOpen, openDialogHandler, closeDialogHandler } = useDialog();
 
   const shouldRender = () => {
     const excludedPath = ["verify-email", "signup", "signin"];
     return excludedPath.some((path) => !pathname.includes(path));
   };
 
-  const openDialogue = () => {
-    setIsDialogueOpen(true);
-  };
-
-  const closeDialogue = () => {
-    setIsDialogueOpen(false);
-  };
-
   const signoutHandler = async () => {
-    console.log("inside");
     try {
       const response = await signoutUser();
-      if (response.data?.success) {
+      if (response.data) {
+        closeDialogHandler();
         navigate("/");
       }
 
@@ -49,7 +42,7 @@ const Navbar = () => {
     {
       name: "Signout",
       isLink: false,
-      action: openDialogue,
+      action: openDialogHandler,
     },
   ];
 
@@ -77,15 +70,15 @@ const Navbar = () => {
           </ul>
         )}
       </div>
-      {isDialogueOpen && (
+      {isDialogOpen && (
         <Dialogue
           title={"Sign out from account"}
           description={
             "Are you sure you want to sign out from your account? You will not be able to build your portfolio."
           }
           buttonText={"Sign out"}
-          isOpen={isDialogueOpen}
-          onClose={closeDialogue}
+          isOpen={isDialogOpen}
+          onClose={closeDialogHandler}
           handler={signoutHandler}
         />
       )}
