@@ -15,6 +15,7 @@ const VerifyEmail = () => {
     if (!token) navigate("/");
     if (error) {
       setMessage(error.data?.message);
+      navigate("/")
     }
     if (data) {
       setMessage(data.message);
