@@ -4,5 +4,6 @@ import EmailVerification from "./authentication/EmailVerification";
 import Signup from "./authentication/Signup";
 import Signin from "./authentication/Signin";
 import VerifyEmail from "./authentication/VerifyEmail";
+import AccountSetting from "./authentication/AccountSetting";
 
-export { Editor, Landing, EmailVerification, Signin, Signup, VerifyEmail,};
+export { Editor, Landing, EmailVerification, Signin, Signup, VerifyEmail, AccountSetting,};

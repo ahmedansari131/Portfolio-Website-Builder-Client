@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
 import { store } from "./app/store/store.js";
 import { Provider } from "react-redux";
 import "./index.css";
@@ -11,7 +10,15 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Layout from "./Layout.jsx";
-import { Signup, Signin, Landing, VerifyEmail } from "./pages/index.js";
+import {
+  AccountSetting,
+  Editor,
+  Landing,
+  Signin,
+  Signup,
+  VerifyEmail,
+} from "./pages/index.js";
+import { ProtectedRoutes } from "./components/index.js";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,17 +26,17 @@ const router = createBrowserRouter(
       <Route path="/" element={<Landing />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/signin" element={<Signin />} />
-      <Route path="/verify-email/" element={<VerifyEmail />} />
+      <Route path="/verify-email" element={<VerifyEmail />} />
+      <Route element={<ProtectedRoutes />}>
+        <Route path="/editor" element={<Editor />} />
+        <Route path="/account-setting" element={<AccountSetting />} />
+      </Route>
     </Route>
   )
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  // <React.StrictMode>
   <Provider store={store}>
-    <RouterProvider router={router}>
-      <App />
-    </RouterProvider>
+    <RouterProvider router={router} />;
   </Provider>
-  // {/* </React.StrictMode> */}
 );
