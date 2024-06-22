@@ -7,6 +7,8 @@ import useTemplateDetail from "./editorHooks/useTemplateDetail/useTemplateDetail
 import useDefaultStyle from "./editorHooks/useDefaultStyle/useDefaultStyle";
 import useIconActiveController from "./editorHooks/useIconActiveController/useIconActiveController";
 import useHTMLToJSON from "./editorHooks/useHTMLToJSON/useHTMLToJSON";
+import useAuth from "./useAuth/useAuth";
+import useRestrictRoute from "./useRestrictRoute/useRestrictRoute";
 
 export{
     useEditorDomHandler,
@@ -18,4 +20,6 @@ export{
     useDefaultStyle,
     useIconActiveController,
     useHTMLToJSON,
+    useAuth,
+    useRestrictRoute,
 }
