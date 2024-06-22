@@ -56,7 +56,6 @@ const Signup = () => {
       }
 
       if (!isValidEmail(inputData.email)) {
-        console.log("object", isValidEmail(inputData.email));
         setErrorMessage((prev) => ({
           ...prev,
           email: "Enter a valid email address.",
