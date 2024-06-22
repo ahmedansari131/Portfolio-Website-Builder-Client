@@ -31,12 +31,14 @@ export const authApi = createApi({
         body: data,
       }),
     }),
+
     verifyEmail: builder.query({
       query: (token) => ({
         url: `verify-email/?token=${token}`,
         method: "GET",
       }),
     }),
+
     getUser: builder.query({
       query: () => ({
         url: "user/",
@@ -44,6 +46,7 @@ export const authApi = createApi({
       }),
       providesTags: ["User"],
     }),
+
     loginUser: builder.mutation({
       query: (data) => ({
         url: "login/",
@@ -53,6 +56,7 @@ export const authApi = createApi({
       }),
       invalidatesTags: ["User"],
     }),
+
     signedOutUser: builder.mutation({
       query: () => ({
         url: "signout/",
@@ -69,6 +73,29 @@ export const authApi = createApi({
         }
       },
     }),
+
+    forgotPassword: builder.mutation({
+      query: (data) => ({
+        url: "forgot-password/",
+        method: "POST",
+        body: data,
+      }),
+    }),
+
+    verifyUser: builder.query({
+      query: (token) => ({
+        url: `verify-user/?token=${token}`,
+        method: "GET",
+      }),
+    }),
+
+    changePassword: builder.mutation({
+      query: (data) => ({
+        url: "change-password/",
+        method: "PATCH",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -78,4 +105,7 @@ export const {
   useVerifyEmailQuery,
   useGetUserQuery,
   useSignedOutUserMutation,
+  useForgotPasswordMutation,
+  useVerifyUserQuery,
+  useChangePasswordMutation
 } = authApi;
