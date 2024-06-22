@@ -6,7 +6,7 @@ const InputField = (props, ref) => {
     props;
 
   return (
-    <div className="flex flex-col relative">
+    <div className="flex flex-col relative w-full">
       {label && (
         <label className={cn(`text-lg`, labelClassName)} htmlFor="">
           {label}
