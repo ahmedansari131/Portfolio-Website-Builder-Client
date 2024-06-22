@@ -125,6 +125,14 @@ const Signin = () => {
             }
           >
             <ErrorField errorMessage={errorMessage?.[field.name]} />
+            {field.name === "password" && (
+              <Link
+                to={"/forgot-password"}
+                className="font-secondary cursor-pointer font-light text-sm mt-1 hover:underline select-none absolute right-0"
+              >
+                Forgot password?
+              </Link>
+            )}
           </InputField>
         ))}
 
