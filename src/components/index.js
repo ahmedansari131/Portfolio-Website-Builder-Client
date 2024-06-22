@@ -38,6 +38,10 @@ import SecondaryContainer from "./wrapper/SecondaryContainer";
 import InputField from "./input/InputField";
 import Loader from "./loader/Loader";
 import ErrorField from "./errors/ErrorField";
+import DropdownMenu from "./dropdownMenu/DropdownMenu";
+import DropdownMenuItem from "./dropdownMenu/DropdownMenuItem";
+import Dialogue from "./tailwind/dialogue/Dialogue";
+import ProtectedRoutes from "./ProtectedRoutes/ProtectedRoutes";
 
 
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -111,6 +115,10 @@ export {
     InputField,
     Loader,
     ErrorField,
+    DropdownMenu,
+    DropdownMenuItem,
+    Dialogue,
+    ProtectedRoutes,
 
 
     SettingsIcon,
