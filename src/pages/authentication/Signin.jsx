@@ -5,21 +5,33 @@ import {
   Button,
   Loader,
   ErrorField,
+  Dialogue,
 } from "../../components";
 import { buttonTypes } from "../../utils";
 import { Link, useNavigate } from "react-router-dom";
-import { useLoginUserMutation } from "../../services/api/authApi";
+import {
+  useForgotPasswordMutation,
+  useLoginUserMutation,
+} from "../../services/api/authApi";
 import { validateInput, validatePassword } from "../../utils/validateInput";
 import { useDispatch } from "react-redux";
 import { getUser } from "../../app/slices/authentication/userSlice";
+import { useDialog } from "../../hooks";
 
 const Signin = () => {
   const [signInUser, { isLoading }] = useLoginUserMutation();
+  const [forgotPassword, { isLoading: forgotPasswordLoading }] =
+    useForgotPasswordMutation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { isDialogOpen, closeDialogHandler, openDialogHandler } = useDialog();
   const [inputData, setInputData] = useState({
     identifier: "",
     password: "",
+  });
+  const [forgotPasswordIdentifier, setForgotPasswordIdentifier] = useState({
+    identifier: "",
+    identifierError: "",
   });
   const [errorMessage, setErrorMessage] = useState({
     identifier: "",
@@ -92,6 +104,41 @@ const Signin = () => {
     }
   };
 
+  const forgotPasswordHandler = async () => {
+    setForgotPasswordIdentifier((prev) => ({ ...prev, identifierError: "" }));
+
+    if (!validateInput(forgotPasswordIdentifier.identifier)) {
+      setForgotPasswordIdentifier((prev) => ({
+        ...prev,
+        identifierError: "This field is required",
+      }));
+      return;
+    }
+
+    try {
+      const response = await forgotPassword({
+        identifier: forgotPasswordIdentifier?.identifier,
+      });
+      console.log(response);
+      if (response.error) {
+        const error = response.error.data.message;
+        setForgotPasswordIdentifier((prev) => ({
+          ...prev,
+          identifierError: error.identifier,
+        }));
+      }
+
+      if (response.data) {
+        alert(response.data?.message);
+        setForgotPasswordIdentifier({ identifier: "", identifierError: "" });
+        closeDialogHandler();
+      }
+    } catch (error) {
+      console.log("Error occurred while forgetting the password -> ", error);
+      return;
+    }
+  };
+
   return (
     <div className="flex flex-col justify-center items-center font-primary text-mint w-1/2 m-auto gap-10">
       <div className="flex flex-col justify-center items-center gap-1 relative under-line after:w-1/12 after:h-[.1rem] after:rounded-full after:-bottom-3 after:left-1/2 after:-translate-x-1/2">
@@ -103,6 +150,43 @@ const Signin = () => {
       </div>
 
       <div className="flex flex-col w-full gap-7">
+        {isDialogOpen && (
+          <Dialogue
+            buttonText={"Forgot Password"}
+            buttonLoadingState={forgotPasswordLoading}
+            isOpen={isDialogOpen}
+            onClose={closeDialogHandler}
+            handler={forgotPasswordHandler}
+          >
+            <div className="px-6 py-8">
+              <InputField
+                className={`bg-mint ${
+                  forgotPasswordIdentifier.identifierError
+                    ? "border-red-700 border-opacity-100"
+                    : ""
+                }`}
+                labelClassName={
+                  "text-white font-light text-[1rem] font-primary"
+                }
+                label={"Username or email"}
+                type={"text"}
+                required={true}
+                placeholder={"Your username or email"}
+                value={forgotPasswordIdentifier?.identifier}
+                onChange={(e) =>
+                  setForgotPasswordIdentifier((prev) => ({
+                    ...prev,
+                    identifier: e.target.value,
+                  }))
+                }
+              >
+                <ErrorField
+                  errorMessage={forgotPasswordIdentifier?.identifierError}
+                />
+              </InputField>
+            </div>
+          </Dialogue>
+        )}
         {inputFields.map((field) => (
           <InputField
             key={field.label}
@@ -126,12 +210,12 @@ const Signin = () => {
           >
             <ErrorField errorMessage={errorMessage?.[field.name]} />
             {field.name === "password" && (
-              <Link
-                to={"/forgot-password"}
+              <span
+                onClick={openDialogHandler}
                 className="font-secondary cursor-pointer font-light text-sm mt-1 hover:underline select-none absolute right-0"
               >
                 Forgot password?
-              </Link>
+              </span>
             )}
           </InputField>
         ))}
