@@ -9,6 +9,7 @@ import useIconActiveController from "./editorHooks/useIconActiveController/useIc
 import useHTMLToJSON from "./editorHooks/useHTMLToJSON/useHTMLToJSON";
 import useAuth from "./useAuth/useAuth";
 import useRestrictRoute from "./useRestrictRoute/useRestrictRoute";
+import useDialog from "./useDialog/useDialog";
 
 export{
     useEditorDomHandler,
@@ -22,4 +23,5 @@ export{
     useHTMLToJSON,
     useAuth,
     useRestrictRoute,
+    useDialog,
 }
