@@ -5,5 +5,15 @@ import Signup from "./authentication/Signup";
 import Signin from "./authentication/Signin";
 import VerifyEmail from "./authentication/VerifyEmail";
 import AccountSetting from "./authentication/AccountSetting";
+import VerifyUser from "./authentication/VerifyUser";
 
-export { Editor, Landing, EmailVerification, Signin, Signup, VerifyEmail, AccountSetting,};
+export {
+  Editor,
+  Landing,
+  EmailVerification,
+  Signin,
+  Signup,
+  VerifyEmail,
+  AccountSetting,
+  VerifyUser,
+};
