@@ -12,6 +12,7 @@ import {
 import Layout from "./Layout.jsx";
 import {
   AccountSetting,
+  DirectSignin,
   Editor,
   Landing,
   ResetForgotPassword,
@@ -28,7 +29,14 @@ const router = createBrowserRouter(
       <Route path="/signup" element={<Signup />} />
       <Route path="/signin" element={<Signin />} />
       <Route path="/verify-email" element={<VerifyEmail />} />
-      <Route path="/reset-forgot-password/:uid/:token" element={<ResetForgotPassword />} />
+      <Route
+        path="/reset-forgot-password/:uid/:token"
+        element={<ResetForgotPassword />}
+      />
+      <Route
+        path="/direct-signin/:uid/:signin_token"
+        element={<DirectSignin />}
+      />
       <Route element={<ProtectedRoutes />}>
         <Route path="/editor" element={<Editor />} />
         <Route path="/account-setting" element={<AccountSetting />} />
@@ -39,6 +47,6 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-    <RouterProvider router={router} />;
+    <RouterProvider router={router} />
   </Provider>
 );
