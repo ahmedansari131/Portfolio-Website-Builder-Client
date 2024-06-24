@@ -119,7 +119,6 @@ const Signin = () => {
       const response = await forgotPassword({
         identifier: forgotPasswordIdentifier?.identifier,
       });
-      console.log(response);
       if (response.error) {
         const error = response.error.data.message;
         setForgotPasswordIdentifier((prev) => ({
