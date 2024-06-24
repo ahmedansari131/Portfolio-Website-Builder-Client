@@ -86,7 +86,7 @@ const Navbar = () => {
         {!shouldRender() ||
           (!user.userResult?.success ? (
             <Link to={"/signup"}>
-              <Button buttonType={buttonTypes.PRIMARY}>Register</Button>
+              <Button buttonType={buttonTypes.PRIMARY}>Signup</Button>
             </Link>
           ) : (
             <DropdownMenu
