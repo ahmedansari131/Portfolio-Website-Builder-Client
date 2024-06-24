@@ -14,10 +14,10 @@ import {
   AccountSetting,
   Editor,
   Landing,
+  ResetForgotPassword,
   Signin,
   Signup,
   VerifyEmail,
-  VerifyUser,
 } from "./pages/index.js";
 import { ProtectedRoutes } from "./components/index.js";
 
@@ -28,7 +28,7 @@ const router = createBrowserRouter(
       <Route path="/signup" element={<Signup />} />
       <Route path="/signin" element={<Signin />} />
       <Route path="/verify-email" element={<VerifyEmail />} />
-      <Route path="/verify-user" element={<VerifyUser />} />
+      <Route path="/reset-forgot-password/:uid/:token" element={<ResetForgotPassword />} />
       <Route element={<ProtectedRoutes />}>
         <Route path="/editor" element={<Editor />} />
         <Route path="/account-setting" element={<AccountSetting />} />
