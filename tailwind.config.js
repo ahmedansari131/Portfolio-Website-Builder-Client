@@ -7,7 +7,7 @@ export default {
         mint: "#cbf4f3",
         blue: "#032b44",
         mintExtreme: "#4BDFEC",
-        mintHover: "rgba(117, 188, 179, .4)",
+        mintHover: "rgba(117, 188, 179)",
       },
       padding: {
         "side-space": "2em",
