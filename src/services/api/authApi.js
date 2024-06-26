@@ -82,18 +82,25 @@ export const authApi = createApi({
       }),
     }),
 
-    verifyUser: builder.query({
-      query: (token) => ({
-        url: `verify-user/?token=${token}`,
-        method: "GET",
+    forgotPasswordConfirmation: builder.mutation({
+      query: ({ apiData, uid, token }) => ({
+        url: `forgot-password-confirmation/${uid}/${token}/`,
+        method: "POST",
+        body: apiData,
       }),
     }),
 
-    changePassword: builder.mutation({
-      query: (data) => ({
-        url: "change-password/",
-        method: "PATCH",
-        body: data,
+    verifyValidForgotPasswordRequest: builder.mutation({
+      query: ({ uid, token }) => ({
+        url: `verify-valid-forgot-password-request/${uid}/${token}/`,
+        method: "POST",
+      }),
+    }),
+
+    directSignin: builder.mutation({
+      query: ({ uid, signin_token }) => ({
+        url: `direct-signin/${uid}/${signin_token}/`,
+        method: "POST",
       }),
     }),
   }),
@@ -106,6 +113,7 @@ export const {
   useGetUserQuery,
   useSignedOutUserMutation,
   useForgotPasswordMutation,
-  useVerifyUserQuery,
-  useChangePasswordMutation
+  useForgotPasswordConfirmationMutation,
+  useDirectSigninMutation,
+  useVerifyValidForgotPasswordRequestMutation,
 } = authApi;
