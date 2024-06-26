@@ -3,7 +3,7 @@ import { cn } from "../../utils";
 import { buttonTypes } from "../../utils";
 
 const Button = (props) => {
-  const { buttonType, children, handler=null, className = "" } = props;
+  const { buttonType, children, handler = null, className = "" } = props;
   let buttonStyles = "";
   switch (buttonType) {
     case buttonTypes.PRIMARY:
@@ -11,12 +11,12 @@ const Button = (props) => {
       break;
 
     case buttonTypes.SECONDARY:
-      buttonStyles = "bg-mint border-none text-blue font-semibold";
+      buttonStyles =
+        "bg-mint border-none text-blue font-semibold hover:bg-mint hover:bg-opacity-70";
       break;
 
     case buttonTypes.TERTIARY:
-      buttonStyles =
-        "bg-transparent text-teal-600 border-none hover:text-teal-700";
+      buttonStyles = "bg-transparent text-teal-600 border-none ";
       break;
 
     case buttonTypes.SPECIAL:
@@ -30,8 +30,9 @@ const Button = (props) => {
     <div>
       <button
         className={cn(
-          `${buttonStyles} font-secondary px-6 py-2 rounded-md text-mint text-lg border border-mintExtreme border-opacity-40 hover:bg-mintExtreme hover:bg-opacity-30 transition-all duration-200 active:bg-opacity-60`,
-          className
+          `font-secondary px-6 py-2 rounded-md text-mint text-lg border border-mintExtreme border-opacity-40 hover:bg-mintExtreme hover:bg-opacity-30 transition-all duration-200 active:bg-opacity-60`,
+          className,
+          buttonStyles
         )}
         onClick={handler}
       >
