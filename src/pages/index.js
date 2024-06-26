@@ -5,7 +5,8 @@ import Signup from "./authentication/Signup";
 import Signin from "./authentication/Signin";
 import VerifyEmail from "./authentication/VerifyEmail";
 import AccountSetting from "./authentication/AccountSetting";
-import VerifyUser from "./authentication/VerifyUser";
+import ResetForgotPassword from "./authentication/ResetForgotPassword"
+import DirectSignin from "./authentication/DirectSignin";
 
 export {
   Editor,
@@ -15,5 +16,6 @@ export {
   Signup,
   VerifyEmail,
   AccountSetting,
-  VerifyUser,
+  ResetForgotPassword,
+  DirectSignin,
 };

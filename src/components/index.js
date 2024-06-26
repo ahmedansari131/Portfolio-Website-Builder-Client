@@ -42,6 +42,7 @@ import DropdownMenu from "./dropdownMenu/DropdownMenu";
 import DropdownMenuItem from "./dropdownMenu/DropdownMenuItem";
 import Dialogue from "./tailwind/dialogue/Dialogue";
 import ProtectedRoutes from "./ProtectedRoutes/ProtectedRoutes";
+import OTPForm from "./form/OTPForm"
 
 
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -119,6 +120,7 @@ export {
     DropdownMenuItem,
     Dialogue,
     ProtectedRoutes,
+    OTPForm,
 
 
     SettingsIcon,
