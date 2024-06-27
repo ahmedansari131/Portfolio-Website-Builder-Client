@@ -3,7 +3,14 @@ import { cn } from "../../utils";
 import { buttonTypes } from "../../utils";
 
 const Button = (props) => {
-  const { buttonType, children, handler = null, className = "" } = props;
+  const {
+    buttonType,
+    children,
+    handler = null,
+    isDisabled = false,
+    className = "",
+  } = props;
+
   let buttonStyles = "";
   switch (buttonType) {
     case buttonTypes.PRIMARY:
@@ -26,6 +33,7 @@ const Button = (props) => {
     default:
       break;
   }
+  
   return (
     <div>
       <button
@@ -35,6 +43,7 @@ const Button = (props) => {
           buttonStyles
         )}
         onClick={handler}
+        disabled={isDisabled}
       >
         {children}
       </button>
