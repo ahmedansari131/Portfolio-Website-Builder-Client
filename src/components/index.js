@@ -43,6 +43,11 @@ import DropdownMenuItem from "./dropdownMenu/DropdownMenuItem";
 import Dialogue from "./tailwind/dialogue/Dialogue";
 import ProtectedRoutes from "./ProtectedRoutes/ProtectedRoutes";
 import OTPForm from "./form/OTPForm"
+import Sidebar from "./sidebar/Sidebar";
+import ChangeProfileImage from "./account/ChangeProfileImage";
+import ResetPassword from "./account/ResetPassword";
+import ChangeUsername from "./account/ChangeUsername";
+import Spinner from "./loader/Spinner"
 
 
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -121,6 +126,11 @@ export {
     Dialogue,
     ProtectedRoutes,
     OTPForm,
+    Sidebar,
+    ChangeProfileImage,
+    ChangeUsername,
+    ResetPassword,
+    Spinner,
 
 
     SettingsIcon,
