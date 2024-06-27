@@ -103,6 +103,21 @@ export const authApi = createApi({
         method: "POST",
       }),
     }),
+
+    checkUsernameAvailability: builder.query({
+      query: ({ debouncedUsernameValue }) => ({
+        url: `check-username-availability/?username=${debouncedUsernameValue}`,
+        method: "GET",
+      }),
+    }),
+
+    resetPassword: builder.mutation({
+      query: (data) => ({
+        url: `reset-password/`,
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -116,4 +131,6 @@ export const {
   useForgotPasswordConfirmationMutation,
   useDirectSigninMutation,
   useVerifyValidForgotPasswordRequestMutation,
+  useCheckUsernameAvailabilityQuery,
+  useResetPasswordMutation,
 } = authApi;
