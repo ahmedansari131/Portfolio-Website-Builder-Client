@@ -1,9 +1,16 @@
+import { cn } from "../../utils";
+
 const ErrorField = (props) => {
-  const { errorMessage } = props;
-  
+  const { errorMessage, successMessage } = props;
+
   return (
-    <span className="absolute top-full left-4 text-[.8rem] text-red-500 translate-y-1">
-      {errorMessage}
+    <span
+      className={cn(
+        errorMessage ? "text-red-500" : "text-green-500",
+        `absolute top-full left-4 text-[.8rem] translate-y-1`
+      )}
+    >
+      {errorMessage || successMessage}
     </span>
   );
 };
