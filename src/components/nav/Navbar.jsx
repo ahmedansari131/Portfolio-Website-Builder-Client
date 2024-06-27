@@ -38,7 +38,7 @@ const Navbar = () => {
   };
 
   const dropdownContent = [
-    { name: "Account Setting", isLink: true, path: "/account-setting" },
+    { name: "Account Setting", isLink: true, path: "/settings" },
     {
       name: "Signout",
       isLink: false,
