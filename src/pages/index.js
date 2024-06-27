@@ -4,10 +4,13 @@ import EmailVerification from "./authentication/EmailVerification";
 import Signup from "./authentication/Signup";
 import Signin from "./authentication/Signin";
 import VerifyEmail from "./authentication/VerifyEmail";
-import AccountSetting from "./authentication/AccountSetting";
+import Settings from "./settings/Settings";
 import ResetForgotPassword from "./authentication/ResetForgotPassword"
 import DirectSignin from "./authentication/DirectSignin";
-
+import Dashboard from "./dashboard/Dashboard"
+import PortfolioProjects from "./portfolioProjects/PortfolioProjects"
+import Account from "./account/Account"
+ 
 export {
   Editor,
   Landing,
@@ -15,7 +18,10 @@ export {
   Signin,
   Signup,
   VerifyEmail,
-  AccountSetting,
+  Settings,
   ResetForgotPassword,
   DirectSignin,
+  Dashboard,
+  PortfolioProjects,
+  Account,
 };
