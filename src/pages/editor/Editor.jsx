@@ -4,7 +4,7 @@ import { ControlCenter, Workspace } from "../../components";
 
 const Editor = () => {
   return (
-    <div className="relative overflow-hidden h-screen">
+    <div className="relative overflow-hidden h-screen text-gray-200">
       <div className="flex w-full h-full">
         <ControlCenter />
         <Workspace />
