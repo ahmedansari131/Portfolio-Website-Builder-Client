@@ -42,9 +42,11 @@ const router = createBrowserRouter(
           element={<DirectSignin />}
         />
       </Route>
+      <Route element={<ProtectedRoutes />}>
+        <Route path="editor" element={<Editor />} />
+      </Route>
       <Route path="settings" element={<Settings />}>
         <Route element={<ProtectedRoutes />}>
-          <Route path="editor" element={<Editor />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="account" element={<Account />} />
           <Route path="portfolio-projects" element={<PortfolioProjects />} />
